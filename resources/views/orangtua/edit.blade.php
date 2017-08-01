@@ -11,7 +11,6 @@
 			<form action="{{route('orangtua.update', $ortu->id) }}" method="POST">
 				<input type="hidden" name="_method" value="PUT">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				
 				<div class="form-group">
 					<label class="control-lable">Nama Ayah</label>
 					<input type="text" name="a" value="{{$ortu->nama_ayah}}" class="form-control" required="">

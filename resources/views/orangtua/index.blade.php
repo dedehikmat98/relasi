@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
+<div class="container">
 <div class="row">
-	<center><h1>Data Orang Tua</h1>
+	<center><h1>Data Orang Tua</h1></center>
 	<div class="panel-panel-primary">
 		<div class="panel-headling">Data Orang Tua
-		<div class="panel-title pull right"><a href="/orangtua/create">Tambah Data</a></div>
-		<div class="panel-body">
+		<div class="panel-title pull-right"><a href="/orangtua/create">Tambah Data</a></div>
 		</div>
-		</center>
+		<div class="panel-body">
 			<table class="table">
 				<thead>
 					<tr>
@@ -24,7 +24,7 @@
 					@foreach($ortu as $data)
 					<tr>
 						<td>{{$data->nama_ayah}}</td>
-						<td>{{$data->nama_ibuh}}</td>
+						<td>{{$data->nama_ibu}}</td>
 						<td>{{$data->umur_ayah}}</td>
 						<td>{{$data->umur_ibu}}</td>
 						<td>{{$data->alamat}}</td>
@@ -43,7 +43,7 @@
 							<form action="{{route('orangtua.destroy', $data->id)}}" method="POST">
 								<input type="hidden" name="_method" value="DELETE">
 								<input type="hidden" name="_token">
-								<input type="submit" name="Delete" class="btn btn-danger">
+								<input type="submit" value="Delete" class="btn btn-danger">
 								{{csrf_field()}}
 							</form>
 						</td>
@@ -53,5 +53,6 @@
 			</table>
 		</div>
 	</div>
+</div>
 </div>
 @endsection
