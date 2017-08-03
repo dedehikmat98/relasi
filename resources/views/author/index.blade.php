@@ -11,7 +11,7 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Nama</th>
+						<th>Nama Author</th>
 						<th colspan="3">Action</th>
 					</tr>
 				</thead>
