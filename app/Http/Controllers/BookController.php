@@ -41,7 +41,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         //
-        $book = new book;
+        $book = new Book;
         $book->title = $request->a;
         $book->author_id = $request->b;
         $book->amount = $request->c;
@@ -82,7 +82,8 @@ class BookController extends Controller
     {
         //
         $book = Book::findOrFail($id);
-        return view('book.edit',compact('book'));
+        $author = Author::all();
+        return view('book.edit',compact('book', 'author'));
     }
 
     /**
@@ -95,11 +96,19 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $book = Book::findOrFail();
+        $book = Book::findOrFail($id);
         $book->title = $request->a;
         $book->author_id = $request->b;
         $book->amount = $request->c;
-        $book->cover = $request->d;
+        if ($request->hasFile('cover')) {
+            $books = $request->file('cover');
+            $extension = $books->getClientOriginalExtension();
+            $filename = str_random(6). '.' .$extension;
+            $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+            $books->move($destinationPath, $filename);
+            $book->cover = $filename;
+        }
+
         $book->save();
         return redirect('book');
 

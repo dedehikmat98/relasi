@@ -12,7 +12,7 @@
 				<thead>
 					<tr>
 						<th>Title</th>
-						<th>Author_Id</th>
+						<th>Author</th>
 						<th>Amount</th>
 						<th>Cover</th>
 						<th colspan="3">Action</th>
